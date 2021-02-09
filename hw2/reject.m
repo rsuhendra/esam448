@@ -1,3 +1,4 @@
+% Method that generates the samples 
 function y = reject(alph,beta,n)
     a=0.2; b=1;
     xhat=Ginv(rand(1,n),a,b);
