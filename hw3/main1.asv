@@ -1,9 +1,0 @@
-a=0.2;
-M=10^5;
-Nt=1000;
-Ihat= 
-for i=1:Nt
-    xj=randp(M);
-    Gxj=g(xj,a);
-    Ihat=mean(Gxj);
-end

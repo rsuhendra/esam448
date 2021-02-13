@@ -1,6 +1,0 @@
-a=0.2;
-
-
-xj=randp(M);
-Gxj=g(xj,a);
-Ihat=mean(Gxj);
