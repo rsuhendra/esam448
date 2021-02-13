@@ -1,6 +1,6 @@
-a=0.2;
+a=0.8;
 M=4^9;
-Nt=1000;
+Nt=10000;                                                                                                                                                                                           ;
 diff=zeros([1,Nt]);
 for i=1:Nt
     xj=randp(M);
@@ -9,7 +9,7 @@ for i=1:Nt
 end
 diff=diff-Iexact(a);
 histogram(diff)
-title('$M=4^9$ with $N_{trial}=1000$','interpreter','latex')
+title('$\alpha=0.8, M=4^9$ with $N_{trial}=10000$','interpreter','latex')
 ylabel('Counts')
 xlabel('$\hat{I}-I_{exact}$','interpreter','latex')
 set(gca,'YScale','log')

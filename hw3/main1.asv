@@ -9,15 +9,13 @@ for i=1:Nt
     Ihat(i)=mean(Gxj);
     sighat(i)=sqrt(var(Gxj)/M);
 end
-histogram(Ihat)
-title('$\alpha=0.8, M=10^5$ with $N_{trial}=10000$','interpreter','latex')
-ylabel('Counts')
-xlabel('$\hat{I}$','interpreter','latex')
-
-% histogram(sighat)
+% histogram(Ihat)
 % title('$\alpha=0.8, M=10^5$ with $N_{trial}=10000$','interpreter','latex')
 % ylabel('Counts')
-% xlabel('$\hat{\sigma}_{\hat{I}}$','interpreter','latex')
+% xlabel('$\hat{I}$','interpreter','latex')
 
-set(gca,'YScale','log')
+histogram(sighat)
+title('$\alpha=0.8, M=10^5$ with $N_{trial}=1000$','interpreter','latex')
+ylabel('Counts')
+xlabel('$\hat{\sigma}_{\hat{I}}$','interpreter','latex')
 

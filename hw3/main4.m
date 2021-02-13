@@ -1,26 +1,29 @@
-a=0.2;
-M=10^4;
-Nt=1000;
+a=0.8;
+M=10;
+Nt=10000;
 diff=zeros([1,Nt]);
+vr=zeros([1,Nt]);
 for i=1:Nt
     xj=randp(M);
     Gxj=g(xj,a);
     diff(i)=mean(Gxj);
+    vr(i)=var(Gxj);
 end
 diff=diff-Iexact(a);
 diff=abs(diff);
-cheb=cheberr(a,0.99,M);
-clt=clterr(a,0.99,M);
-chebperc=sum(diff<cheb)/10;
-cltperc=sum(diff<clt)/10;
+v=mean(vr);
+cheb=cheberr(a,0.99,M,v);
+clt=clterr(a,0.99,M,v);
+chebperc=sum(diff<cheb)/100;
+cltperc=sum(diff<clt)/100;
 
 
-cltmsg=sprintf('%.1f < CLT bound',cltperc);
-chebmsg=sprintf('%.1f < Chebyshev bound',chebperc);
+cltmsg=sprintf('%.2f < CLT bound',cltperc);
+chebmsg=sprintf('%.2f < Chebyshev bound',chebperc);
 histogram(diff)
 xline(clt,'DisplayName',cltmsg)
 xline(cheb,'DisplayName',chebmsg)
-title('$M=10^5$ with $N_{trial}=1000$','interpreter','latex')
+title('$\alpha=0.8, M=10$ with $N_{trial}=10000$','interpreter','latex')
 ylabel('Counts')
 xlabel('$|\hat{I}-I_{exact}|$','interpreter','latex')
 legend
