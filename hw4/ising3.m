@@ -1,5 +1,5 @@
 H=0; J=1; L=100; Nt=500; 
-Tc=2.29:-0.005:2.25;
+Tc=2.4:-0.03:2.1;
 Lat=sign(rand(L)-0.5);
 posit=1:L;
 up_shift=circshift(posit,1);
@@ -85,31 +85,37 @@ x = linspace(0,10);
 plot(Tc,SpinEnergy,'-o')
 xlabel('$\tilde{T}$','interpreter','latex')
 title('Energy per spin')
+xlim([1.5 3])
 
 subplot(3,2,2)
 plot(Tc,SpecificHeat,'-o')
 xlabel('$\tilde{T}$','interpreter','latex')
 title('Specific Heat per spin')
+xlim([1.5 3])
 
 subplot(3,2,3)
 plot(Tc,Magnetization,'-o')
 xlabel('$\tilde{T}$','interpreter','latex')
 title('Magnetization per spin')
+xlim([1.5 3])
 
 subplot(3,2,4)
 plot(Tc,Suscept,'-o')
 xlabel('$\tilde{T}$','interpreter','latex')
 title('Susceptibility per spin')
+xlim([1.5 3])
 
 subplot(3,2,5)
 plot(Tc,SpinFrac,'-o')
 xlabel('$\tilde{T}$','interpreter','latex')
 title('Fraction of accepted spin flips')
+xlim([1.5 3])
 
 subplot(3,2,6)
 plot(Tc,Tcorr,'-o')
 xlabel('$\tilde{T}$','interpreter','latex')
 title('Correlation time')
+xlim([1.5 3])
 
-sgtitle('$L=100, \tilde{T} \in [2.25,2.29]$','interpreter','latex')
+sgtitle('$L=100, \tilde{T} \in [2.1,2.4]$ ()','interpreter','latex')
 print('FillPageFigure','-dpdf','-fillpage')

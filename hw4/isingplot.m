@@ -1,4 +1,6 @@
-H=0; J=1; L=40; Nt=500; Tc=[2.28 2.27];
+H=0; J=1; L=100; Nt=500; 
+Tc=[3 2.27 1.5];
+Tcorr=[50 1000 50];
 Lat=sign(rand(L)-0.5);
 posit=1:L;
 up_shift=circshift(posit,1);
@@ -14,12 +16,10 @@ for i=1:L
 end
 U=U-(J/2)*s;
 
-tcorr=20;
 for l=1:length(Tc)
     T=Tc(l);
-    Uvec=zeros([Nt*tcorr,1]);
-    counter=0;
-    for n=1:Nt
+    tcorr=Tcorr(l);
+    for n=1:Nt+1
         for z=1:tcorr
             [row,col]=ind2sub([L,L],randperm(L^2));
             r=rand(1,L^2);
@@ -31,17 +31,10 @@ for l=1:length(Tc)
                     U=U+delU;
                 end
             end
-            counter=counter+1;
-            Uvec(counter)=U;
         end
     end
-    [c,lags]=xcov(Uvec,3000);
-    [m,k]=max(c);
-    for i=k:length(c)
-        if c(i)<(m/10)
-            tcorr=i-k;
-            break
-        end
-    end
-    disp(tcorr)
+    subplot(2,2,4-l)
+    pcolor(Lat)
+    msg=sprintf('T=%.2f',T);
+    title(msg)
 end
